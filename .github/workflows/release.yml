@@ -1,0 +1,16 @@
+name: Maven Release
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  packages: write
+  contents: write
+  
+jobs:
+  call-release:    
+    uses: akil-rails/shared-github-workflows/actions@main
+          
