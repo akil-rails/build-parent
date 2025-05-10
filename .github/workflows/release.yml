@@ -9,8 +9,7 @@ on:
 permissions:
   packages: write
   contents: write
-  
+
 jobs:
-  call-release:    
-    uses: akil-rails/shared-github-workflows/actions@main
-          
+  call-release:
+    uses: akil-rails/shared-github-workflows/.github/workflows/release.yml@main
