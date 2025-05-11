@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>dev.akil</groupId>
@@ -7,25 +9,16 @@
   <version>7.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
+  <properties>
+    <github.owner>akil-rails</github.owner>
+  </properties>
 
   <scm>
-    <connection>scm:git:${project.scm.url}</connection>
-    <developerConnection>scm:git:${project.scm.url}</developerConnection>
-    <url>https://github.com/akil-rails/${project.artifactId}.git</url>
+    <connection>scm:git:${project.scm.url}.git</connection>
+    <developerConnection>scm:git:${project.scm.url}.git</developerConnection>
+    <url>https://github.com/${github.owner}/${project.artifactId}</url>
     <tag>HEAD</tag>
   </scm>
-  <distributionManagement>
-    <repository>
-      <id>github</id>
-      <url>https://maven.pkg.github.com/akil-rails/${project.artifactId}</url>
-    </repository>
-  </distributionManagement>
-  <repositories>
-    <repository>
-      <id>github</id>
-      <url>https://maven.pkg.github.com/akil-rails/test-rel</url>
-    </repository>
-  </repositories>
 
   <profiles>
     <profile>
@@ -40,6 +33,18 @@
         <pmd.skip>true</pmd.skip>
         <spotbugs.skip>true</spotbugs.skip>
       </properties>
+      <distributionManagement>
+        <repository>
+          <id>github</id>
+          <url>https://maven.pkg.github.com/${github.owner}/${project.artifactId}</url>
+        </repository>
+      </distributionManagement>
+      <repositories>
+        <repository>
+          <id>github</id>
+          <url>https://maven.pkg.github.com/${github.owner}</url>
+        </repository>
+      </repositories>
       <build>
         <plugins>
           <plugin>
