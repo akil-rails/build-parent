@@ -9,27 +9,26 @@
 
   <properties>
     <github.org>akil-rails</github.org>
-    <scm.url>https://github.com/${github.org}/${project.artifactId}</scm.url>
-    <dist.url>https://maven.pkg.github.com/${github.org}/${project.artifactId}</dist.url>
-    <rep.url>https://maven.pkg.github.com/${github.org}/*</rep.url>
+    <git.url>https://github.com/${github.org}</git.url>
+    <pkg.url>https://maven.pkg.github.com/${github.org}</pkg.url>
   </properties>
 
   <scm>
-    <connection>scm:git:${scm.url}.git</connection>
-    <developerConnection>scm:git:${scm.url}.git</developerConnection>
-    <url>${scm.url}</url>
+    <connection>scm:git:${project.scm.url}.git</connection>
+    <developerConnection>scm:git:${project.scm.url}.git</developerConnection>
+    <url>${git.url}/${project.artifactId}</url>
     <tag>HEAD</tag>
   </scm>
   <distributionManagement>
     <repository>
       <id>github</id>
-      <url>${dist.url}</url>
+      <url>${pkg.url}/${project.artifactId}</url>
     </repository>
   </distributionManagement>
   <repositories>
     <repository>
       <id>github</id>
-      <url>${rep.url}</url>
+      <url>${pkg.url}/*</url>
     </repository>
   </repositories>
 
