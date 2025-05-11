@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>dev.akil</groupId>
@@ -8,15 +10,30 @@
   <packaging>pom</packaging>
 
   <properties>
-    <github.owner>akil-rails</github.owner>
+    <github.org>akil-rails</github.org>
+    <scm.url>https://github.com/${github.org}/${project.artifactId}</scm.url>
+    <dist.url>https://maven.pkg.github.com/${github.org}/${project.artifactId}</dist.url>
+    <rep.url>https://maven.pkg.github.com/${github.org}/*</rep.url>
   </properties>
 
   <scm>
-    <connection>scm:git:${project.scm.url}.git</connection>
-    <developerConnection>scm:git:${project.scm.url}.git</developerConnection>
-    <url>https://github.com/${github.owner}/${project.artifactId}</url>
+    <connection>scm:git:${scm.url}.git</connection>
+    <developerConnection>scm:git:${scm.url}.git</developerConnection>
+    <url>${scm.url}</url>
     <tag>HEAD</tag>
   </scm>
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <url>${dist.url}</url>
+    </repository>
+  </distributionManagement>
+  <repositories>
+    <repository>
+      <id>github</id>
+      <url>${rep.url}</url>
+    </repository>
+  </repositories>
 
   <profiles>
     <profile>
@@ -31,12 +48,6 @@
         <pmd.skip>true</pmd.skip>
         <spotbugs.skip>true</spotbugs.skip>
       </properties>
-      <distributionManagement>
-        <repository>
-          <id>github</id>
-          <url>https://maven.pkg.github.com/${github.owner}/${project.artifactId}</url>
-        </repository>
-      </distributionManagement>
       <build>
         <plugins>
           <plugin>
